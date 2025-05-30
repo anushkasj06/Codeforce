@@ -13,7 +13,7 @@ public class work{
             }
             long[] b= new long[n];
             for(int i = 0; i < n; i++){
-                b[i] = sc.nextLong()
+                b[i] = sc.nextLong();
             }
             long ans =1;
             long[] res = new long[n];

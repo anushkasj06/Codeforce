@@ -83,26 +83,22 @@ public class LinkedList_Class {
         }
     }
 
-    void search(int x){
+    boolean search(int x){
         if(root == null){
             System.out.println("Empty linked list");
+            return false;
         }
         else{
-            boolean found = false;
+
             Node temp = root;
-            while(temp!=null){
-               if(temp.data == x){
-                   found = true;
-                   break;
-               }
+            while(temp!=null) {
+                if (temp.data == x) {
+                    return true;
+                }
                 temp = temp.next;
             }
-            if(found){
-                System.out.println(temp.data+" Founded");
-            }else{
-                System.out.println(x+" NotFounded");
-            }
         }
+        return false;
     }
 
     void delete(int x){
@@ -212,6 +208,48 @@ public class LinkedList_Class {
             }
 
         }
+    }
+
+
+    void insertafter(int key, int x){
+        if(root== null){
+            System.out.printf("Empty Linked LIst so no such key: "+key);
+        }else{
+            boolean found = false;
+            Node curr= root;
+            while(curr!=null){
+                if(curr.data == key){
+                    Node n = new Node(x);
+                    n.next = curr.next;
+                    found = true;
+                    curr.next= n;
+                    System.out.printf(x+ "Inserted");
+                    break;
+                }
+                curr = curr.next;
+            }
+            if(!found){
+                System.out.printf(x+" Not Found");
+            }
+        }
+    }
+
+    void comman(LinkedList_Class list1, LinkedList_Class list2 ){
+        Node temp = list1.root;
+        boolean found = false;
+        while(temp!=null){
+            int x = temp.data;
+            if(list2.search(x)){
+                System.out.printf(x+"is Intersection found");
+                found = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if(!found){
+            System.out.printf("no intersection");
+        }
+
     }
 
 
