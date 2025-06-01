@@ -74,6 +74,37 @@ public class searching_algo {
         }
     }
 
+
+    private static void quicksort(int[] a, int start, int end){
+        int i = start;
+        int j = end;
+        int pivot = start;
+        while(i<j){
+            while(a[i]<a[pivot]){
+                i++;
+            }
+            while(a[j]> a[pivot]){
+                j--;
+            }
+            if(i<j){
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+        if (i<end) {
+            quicksort(a,j+1,end);
+        }
+        if(j>start){
+            quicksort(a,start,j-1);
+        }
+
+    }
+
+    private static void mergesort(){
+
+    }
+
     public static void main(String[] args) {
         int[] arr1 = { 4,8,2,6,7,3,11,62,54,21,100};
         int[] arr2 = {2,3,4,5,6,7,8,9,10,12,1,3,18,1,9,20,30};
