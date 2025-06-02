@@ -101,9 +101,44 @@ public class searching_algo {
 
     }
 
-    private static void mergesort(){
-
+    private static void mergesort( int[] a, int start, int end){
+        if(start<end){
+            int mid = (start+end)/2;
+            mergesort(a,start,mid);
+            mergesort(a,mid+1,end);
+            merge(a,start,mid,end);
+        }
     }
+    private static void merge(int[] a, int start, int mid, int end){
+        int[] temp = new int[end-start+1];
+        int i = start;
+        int j = mid+1;
+        int k = 0;
+        while(i<=mid && j<=end){
+            if(a[i]<a[j]){
+                temp[k] = a[i];
+                i++;
+            }else{
+                temp[k] = a[j];
+                j++;
+            }
+            k++;
+        }
+        while(i<=mid){
+            temp[k] = a[i];
+            i++;
+            k++;
+        }
+        while(j<=end){
+            temp[k] = a[j];
+            j++;
+            k++;
+        }
+        for(int l=0;l<temp.length;l++){
+            a[start+l] = temp[l];
+        }
+        
+    } 
 
     public static void main(String[] args) {
         int[] arr1 = { 4,8,2,6,7,3,11,62,54,21,100};
